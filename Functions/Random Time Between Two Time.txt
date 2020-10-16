@@ -1,0 +1,10 @@
+    --Random Time Between 07:00 AM to 06:00 PM
+	DECLARE @MinValue INT = 25200 --  7 Hour * 60 Min * 60 Sec
+	DECLARE @MaxValue INT = 64800 -- 18 Hour * 60 Min * 60 Sec
+	DECLARE @Second  INT;
+	DECLARE @StrTime VARCHAR(20)
+
+	SELECT TOP 1 @Second  = Cast(RAND()*(@MaxValue-@MinValue)+@MinValue as int);
+	SELECT @StrTime = CONVERT(varchar, DATEADD(ss, @Second, 0), 108); 
+
+	SELECT @StrTime
